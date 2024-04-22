@@ -21,25 +21,26 @@ def count(num):
    
 
 @app.route('/math/<int:num1>/<operation>/<int:num2>')
-def math(num1, operation,num2):
+def math(num1, operation, num2):
     if operation == 'add':
         result = num1 + num2
     elif operation == 'sub':
         result = num1 - num2
-    elif operation == 'multiplication':
-        result =  num1 * num2
-    elif operation == 'division':
+    elif operation == 'multiply':
+        result = num1 * num2
+    elif operation == 'divide':
         if num2 != 0:
-            result = num1/num2
+            result = num1 / num2
         else:
-            return 'cannot divide by zero'
-    elif operation == '%':
+            return 'Cannot divide by zero.'
+    elif operation == 'mod':
         if num2 == 0:
             return 'Cannot divide by zero.'
         result = num1 % num2
     else:
-        return'operation not supported'
+        return 'Operation not supported.'
     return f'{num1} {operation} {num2} = {result}'
+
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
